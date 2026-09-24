@@ -1,113 +1,177 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>prof-kim.com</title>
-  <style>
-    /* 예시 사이트 특유의 모노스페이스 타이포그래피 & 3단 그리드 디자인 */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Courier New', Courier, monospace;
-      background-color: #ffffff;
-      color: #000000;
-      line-height: 1.5;
-      padding: 40px 20px;
-    }
-    .container {
-      display: grid;
-      grid-template-columns: 200px 1fr 280px;
-      gap: 30px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    /* Left Column (Nav) */
-    .left-nav a {
-      display: block;
-      color: #000;
-      text-decoration: none;
-      margin-bottom: 8px;
-    }
-    .left-nav a:hover { text-decoration: underline; }
-    /* Middle Column (Grid Cards) */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .card {
-      border: 2px solid #000000;
-      padding: 16px;
-      background-color: #fff;
-    }
-    .card-header {
-      border-bottom: 1px solid #000;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
-      font-weight: bold;
-    }
-    .card-body {
-      font-size: 0.9rem;
-      min-height: 120px;
-    }
-    /* Right Column (Contact & Info) */
-    .right-info {
-      font-size: 0.95rem;
-    }
-    .right-info p { margin-bottom: 12px; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prof. KIM</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.5;
+      padding: 40px 20px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 200px 1fr 280px;
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    /* 좌측 단 (메뉴) */
+    .left-nav h1 {
+      font-size: 20px;
+      margin-bottom: 25px;
+      font-weight: bold;
+    }
+    .left-nav a {
+      display: block;
+      color: #000;
+      text-decoration: none;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .left-nav a:hover {
+      text-decoration: underline;
+    }
+    /* 중앙 단 (카드가 들어가는 2열 그리드) */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .card {
+      border: 3px solid #000;
+      padding: 18px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #000;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .card-title {
+      font-weight: bold;
+      font-size: 15px;
+    }
+    .card-date {
+      font-size: 12px;
+      text-align: right;
+    }
+    .card-body {
+      font-size: 13px;
+      flex-grow: 1;
+    }
+    .card-footer {
+      font-size: 11px;
+      text-align: right;
+      margin-top: 15px;
+    }
+    /* 우측 단 (소속 및 연락처) */
+    .right-info {
+      font-size: 13px;
+    }
+    .right-info p {
+      margin-bottom: 15px;
+    }
+    /* 모바일 가로폭 대응 */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- 1단: 왼쪽 메뉴 -->
-    <div class="left-nav">
-      <h2 style="margin-bottom: 20px;">Prof. KIM</h2>
-      <a href="#about">ABOUT</a>
-      <a href="#research">RESEARCH</a>
-      <a href="#publications">PUBLICATIONS</a>
-      <a href="#contact">CONTACT</a>
-    </div>
+  <div class="container">
+    <!-- 1단 (좌측 메뉴) -->
+    <div class="left-nav">
+      <h1>Prof. KIM</h1>
+      <a href="#about">ABOUT</a>
+      <a href="#research">RESEARCH</a>
+      <a href="#publications">PUBLICATIONS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
 
-    <!-- 2단: 중앙 카드 영역 (전시/연구/논문 프로젝트) -->
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-header">Research Project #1</div>
-        <div class="card-body">
-          <p><strong>Title:</strong> Interaction Design Framework</p>
-          <p>2026.01 - 2026.08</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">Publication #1</div>
-        <div class="card-body">
-          <p><strong>Journal:</strong> Design Studies</p>
-          <p>2025.12</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">Exhibition #1</div>
-        <div class="card-body">
-          <p><strong>Location:</strong> Seoul, Korea</p>
-          <p>2025.05</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">Teaching</div>
-        <div class="card-body">
-          <p><strong>Course:</strong> Advanced Media Design</p>
-          <p>Spring 2026</p>
-        </div>
-      </div>
-    </div>
+    <!-- 2단 (중앙 프로젝트/실적 카드) -->
+    <div class="card-grid">
+      <div class="card">
+        <div>
+          <div class="card-header">
+            <span class="card-title">Research Project #1</span>
+            <span class="card-date">2026.01 - 2026.08</span>
+          </div>
+          <div class="card-body">
+            <strong>Title:</strong> Interaction Design Framework
+          </div>
+        </div>
+        <div class="card-footer">by Prof. KIM</div>
+      </div>
 
-    <!-- 3단: 오른쪽 주소 및 연락처 -->
-    <div class="right-info">
-      <p><strong>Prof. KIM</strong></p>
-      <p>Department of Design<br>University Address<br>Seoul, South Korea</p>
-      <p><strong>Email:</strong> contact@prof-kim.com</p>
-    </div>
-  </div>
+      <div class="card">
+        <div>
+          <div class="card-header">
+            <span class="card-title">Publication #1</span>
+            <span class="card-date">2025.12</span>
+          </div>
+          <div class="card-body">
+            <strong>Journal:</strong> Design Studies
+          </div>
+        </div>
+        <div class="card-footer">with Lab</div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-header">
+            <span class="card-title">Exhibition #1</span>
+            <span class="card-date">2025.05</span>
+          </div>
+          <div class="card-body">
+            <strong>Location:</strong> Seoul, Korea
+          </div>
+        </div>
+        <div class="card-footer">at Gallery</div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-header">
+            <span class="card-title">Teaching</span>
+            <span class="card-date">2025.03</span>
+          </div>
+          <div class="card-body">
+            <strong>Course:</strong> Advanced Media Design
+          </div>
+        </div>
+        <div class="card-footer">University</div>
+      </div>
+    </div>
+
+    <!-- 3단 (우측 주소 및 안내) -->
+    <div class="right-info">
+      <p><strong>Department of Design</strong><br>Seoul, South Korea</p>
+      <p>email@example.com</p>
+      <br>
+      <p>© 2026 Prof. KIM. All rights reserved.</p>
+    </div>
+  </div>
 
 </body>
-</html> 네가 이 코드를 만들어 줬는데...
+</html>
