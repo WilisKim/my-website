@@ -14,85 +14,85 @@
       font-family: 'Courier New', Courier, monospace;
       background-color: #ffffff;
       color: #000000;
-      line-height: 1.5;
+      line-height: 1.6;
       padding: 40px 20px;
     }
     .container {
       display: grid;
       grid-template-columns: 200px 1fr 280px;
-      gap: 30px;
+      gap: 40px;
       max-width: 1400px;
       margin: 0 auto;
     }
-    /* 좌측 단 (메뉴) */
+    /* 1단: 좌측 메뉴 */
     .left-nav h1 {
       font-size: 20px;
       margin-bottom: 25px;
       font-weight: bold;
     }
-    .left-nav a {
+    .left-nav nav a {
       display: block;
       color: #000;
       text-decoration: none;
       margin-bottom: 12px;
       font-size: 14px;
+      cursor: pointer;
     }
-    .left-nav a:hover {
+    .left-nav nav a:hover,
+    .left-nav nav a.active {
       text-decoration: underline;
+      font-weight: bold;
     }
-    /* 중앙 단 (카드가 들어가는 2열 그리드) */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+
+    /* 2단: 중앙 텍스트 콘텐츠 영역 (박스 제거) */
+    .main-content {
+      min-height: 400px;
     }
-    .card {
-      border: 3px solid #000;
-      padding: 18px;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 220px;
+    .tab-content {
+      display: none; /* 기본적으로 숨김 */
     }
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #000;
+    .tab-content.active {
+      display: block; /* 선택된 항목만 표시 */
+    }
+    .tab-content h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #000;
       padding-bottom: 8px;
-      margin-bottom: 12px;
     }
-    .card-title {
+    .tab-content p {
+      font-size: 14px;
+      margin-bottom: 15px;
+      white-space: pre-line;
+    }
+    .item-list {
+      margin-top: 15px;
+    }
+    .item {
+      margin-bottom: 25px;
+    }
+    .item-title {
       font-weight: bold;
       font-size: 15px;
     }
-    .card-date {
+    .item-date {
       font-size: 12px;
-      text-align: right;
+      color: #555;
     }
-    .card-body {
-      font-size: 13px;
-      flex-grow: 1;
-    }
-    .card-footer {
-      font-size: 11px;
-      text-align: right;
-      margin-top: 15px;
-    }
-    /* 우측 단 (소속 및 연락처) */
+
+    /* 3단: 우측 소속 및 정보 */
     .right-info {
       font-size: 13px;
     }
     .right-info p {
       margin-bottom: 15px;
     }
-    /* 모바일 가로폭 대응 */
+
+    /* 모바일 대응 */
     @media (max-width: 900px) {
       .container {
         grid-template-columns: 1fr;
-      }
-      .card-grid {
-        grid-template-columns: 1fr;
+        gap: 30px;
       }
     }
   </style>
@@ -103,65 +103,64 @@
     <!-- 1단 (좌측 메뉴) -->
     <div class="left-nav">
       <h1>Prof. KIM</h1>
-      <a href="#about">ABOUT</a>
-      <a href="#research">RESEARCH</a>
-      <a href="#publications">PUBLICATIONS</a>
-      <a href="#contact">CONTACT</a>
+      <nav>
+        <a class="nav-link active" onclick="showTab('about')">ABOUT</a>
+        <a class="nav-link" onclick="showTab('research')">RESEARCH</a>
+        <a class="nav-link" onclick="showTab('publications')">PUBLICATIONS</a>
+        <a class="nav-link" onclick="showTab('contact')">CONTACT</a>
+      </nav>
     </div>
 
-    <!-- 2단 (중앙 프로젝트/실적 카드) -->
-    <div class="card-grid">
-      <div class="card">
-        <div>
-          <div class="card-header">
-            <span class="card-title">Research Project #1</span>
-            <span class="card-date">2026.01 - 2026.08</span>
-          </div>
-          <div class="card-body">
-            <strong>Title:</strong> Interaction Design Framework
-          </div>
-        </div>
-        <div class="card-footer">by Prof. KIM</div>
+    <!-- 2단 (중앙 텍스트 내용 영역) -->
+    <div class="main-content">
+      
+      <!-- ABOUT 내용 -->
+      <div id="about" class="tab-content active">
+        <h2>ABOUT</h2>
+        <p>안녕하세요. 인터랙션 디자인 및 미디어 연구를 진행하는 김교수입니다.</p>
+        <p>사용자 경험 디자인과 디지털 미디어 시스템에 관한 다양한 프로젝트와 연구를 진행하고 있습니다.</p>
       </div>
 
-      <div class="card">
-        <div>
-          <div class="card-header">
-            <span class="card-title">Publication #1</span>
-            <span class="card-date">2025.12</span>
+      <!-- RESEARCH 내용 -->
+      <div id="research" class="tab-content">
+        <h2>RESEARCH</h2>
+        <div class="item-list">
+          <div class="item">
+            <div class="item-title">1. Interaction Design Framework</div>
+            <div class="item-date">2026.01 - 2026.08</div>
+            <p>디지털 인터페이스에서의 사용자 상호작용 프레임워크 연구</p>
           </div>
-          <div class="card-body">
-            <strong>Journal:</strong> Design Studies
+          <div class="item">
+            <div class="item-title">2. Advanced Media Design Project</div>
+            <div class="item-date">2025.03 - 2025.12</div>
+            <p>차세대 미디어 디자인 기술을 활용한 연구 과제</p>
           </div>
         </div>
-        <div class="card-footer">with Lab</div>
       </div>
 
-      <div class="card">
-        <div>
-          <div class="card-header">
-            <span class="card-title">Exhibition #1</span>
-            <span class="card-date">2025.05</span>
+      <!-- PUBLICATIONS 내용 -->
+      <div id="publications" class="tab-content">
+        <h2>PUBLICATIONS</h2>
+        <div class="item-list">
+          <div class="item">
+            <div class="item-title">• "A Study on Digital Interaction" (2025)</div>
+            <p>Journal of Design Studies, Vol. 12, pp. 45-58.</p>
           </div>
-          <div class="card-body">
-            <strong>Location:</strong> Seoul, Korea
+          <div class="item">
+            <div class="item-title">• "User Experience in Modern Web Design" (2024)</div>
+            <p>International Design Conference Proceedings.</p>
           </div>
         </div>
-        <div class="card-footer">at Gallery</div>
       </div>
 
-      <div class="card">
-        <div>
-          <div class="card-header">
-            <span class="card-title">Teaching</span>
-            <span class="card-date">2025.03</span>
-          </div>
-          <div class="card-body">
-            <strong>Course:</strong> Advanced Media Design
-          </div>
-        </div>
-        <div class="card-footer">University</div>
+      <!-- CONTACT 내용 -->
+      <div id="contact" class="tab-content">
+        <h2>CONTACT</h2>
+        <p><strong>Office:</strong> 서울시 학과 연구실 402호</p>
+        <p><strong>Email:</strong> email@example.com</p>
+        <p><strong>Tel:</strong> 02-123-4567</p>
       </div>
+
     </div>
 
     <!-- 3단 (우측 주소 및 안내) -->
@@ -172,6 +171,25 @@
       <p>© 2026 Prof. KIM. All rights reserved.</p>
     </div>
   </div>
+
+  <!-- 메뉴 클릭 시 내용을 전환하는 스크립트 -->
+  <script>
+    function showTab(tabId) {
+      // 1. 모든 탭 내용 숨기기
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.remove('active'));
+
+      // 2. 모든 메뉴 링크의 언더라인/볼드 제거
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => link.classList.remove('active'));
+
+      // 3. 선택한 탭 내용만 보여주기
+      document.getElementById(tabId).classList.add('active');
+
+      // 4. 클릭한 메뉴 스타일 변경
+      event.target.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
